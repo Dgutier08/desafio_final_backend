@@ -1,5 +1,5 @@
 const product = (sequelize, DataTypes) => {
-    const Product = sequelize.define('products', {
+    const Product = sequelize.define('product', {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false, //no puede ser vacui
@@ -23,11 +23,11 @@ const product = (sequelize, DataTypes) => {
             allowNull: true
         },
     }, {
-        modelName: "products",
+        modelName: "product",
     });
     Product.associate = models =>{
         Product.hasmany(models.User)
     return Product;
 };
-
+}
 module.exports = product;

@@ -15,7 +15,7 @@ const rol = (sequelize, DataTypes) => {
             allowNull: true
         },
     }, {
-        modelName: "breed",
+        modelName: "rol",
     });
     Rol.associate = models =>{
         Rol.hasmany(models.User)
