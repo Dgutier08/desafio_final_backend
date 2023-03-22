@@ -17,8 +17,11 @@ const rol = (sequelize, DataTypes) => {
     }, {
         modelName: "rol",
     });
-    Rol.associate = models =>{
-        Rol.hasmany(models.User)
+    Rol.hasMany(models.User, {
+        foreignKey: 'rolId',
+        as: 'users'
+      });
+      
     }
     return Rol;
 };
