@@ -1,10 +1,9 @@
 //importar los modelos
-const  Sequelize = require('sequelize')
+const Sequelize = require('sequelize')
 
 const User = require('./user.model')
-const Rol = require('./rol.model')
-const Products = require('./Product.model')
 
+const Product = require('./product.model')
 
 //crear conexion con la base de datos
 const sequelize = new Sequelize (
@@ -12,8 +11,8 @@ const sequelize = new Sequelize (
     process.env.PGUSER,
     process.env.PGPASSWORD,
     {
-    host: process.env.PGHOST,
-    dialect: 'postgres'
+        host: process.env.PGHOST,
+        dialect: 'prostgres'
     }
 )
 
@@ -21,19 +20,18 @@ const sequelize = new Sequelize (
 const models = {
     User: User(sequelize, Sequelize.DataTypes),
     Rol: Rol(sequelize, Sequelize.DataTypes),
-    Products: Products(sequelize, Sequelize.DataTypes)
+    Product: Product(sequelize, Sequelize.DataTypes)
 };
 
-//crear las realciones entre los modelos
+//crear las relaciones entre los modelos
 Object.keys(models).forEach(key => {
     if ('associate' in models[key]) {
-        models[key].associate(models);
+        models[key].associate(models)
     }
 });
 
-
 //exportar
-module.exports={
+module.exports = {
     sequelize,
     models,
-    }
+}

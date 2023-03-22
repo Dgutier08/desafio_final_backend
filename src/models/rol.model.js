@@ -24,6 +24,6 @@ const rol = (sequelize, DataTypes) => {
       
     }
     return Rol;
-};
+;
 
 module.exports = rol;
