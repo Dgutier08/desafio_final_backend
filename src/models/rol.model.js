@@ -1,29 +1,26 @@
-const rol = (sequelize, DataTypes) => {
-    const Rol = sequelize.define('rol', {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        breed: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        obey: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
+const Rol = (sequelize, DataTypes) => {
+    const Rol = sequelize.define('Rol', {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+      },
+      nombre: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }
     }, {
-        modelName: "rol",
+      tableName: "rol"
     });
-    Rol.hasMany(models.User, {
-        foreignKey: 'rolId',
-        as: 'users'
-      });
-      
-    }
+  
+    Rol.associate = models => {
+        Rol.belongsTo(models.Rol, {as:'rol',foreignKey:'user'})
+      }
+    ;
+  
     return Rol;
-;
-
-module.exports = rol;
+  };
+  
+  module.exports = Rol;
+  

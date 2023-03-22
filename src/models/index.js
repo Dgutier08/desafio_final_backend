@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize')
 
 const User = require('./user.model')
-
+const Rol = require('./rol.model')
 const Product = require('./product.model')
 
 //crear conexion con la base de datos
@@ -12,7 +12,7 @@ const sequelize = new Sequelize (
     process.env.PGPASSWORD,
     {
         host: process.env.PGHOST,
-        dialect: 'prostgres'
+        dialect: 'postgres'
     }
 )
 
